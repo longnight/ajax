@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
+
+<h1>this is comments list page.</h1>
+
+<form action="/comments/" method="post">
+    {% csrf_token %}
+    {{ form.quote_id.label}}<br>
+    {{ form.quote_id}}{{ form.quote_id.errors}}<br><br>
+    {{ form.content.label}}<br>{{ form.content}}{{ form.content.errors}}<br><br>
+    <input type="submit" value="add comment" />
+
+
+</form>
+<hr><hr><hr>
+<h4>=====================</h4>
+{% for comment in comments%}
+
+    <p>{{comment.id}}: {{ comment.content}}</p>
+    <hr>
+    <br><br><br>
+{% endfor %}
+
+

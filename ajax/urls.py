@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from ajax1.views import comments
+
 
 urlpatterns = [
+    url(r'^comments/', comments, name='comments'),
     url(r'^admin/', include(admin.site.urls)),
 ]
