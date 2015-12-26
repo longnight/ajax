@@ -1,0 +1,1 @@
+An ajax pratics project.
