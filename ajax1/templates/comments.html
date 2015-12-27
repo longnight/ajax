@@ -3,13 +3,12 @@
 <html lang="en">
 <head>
     <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
-</head>
+
 
 
 <body>
 
-<h1>this is comments list page.</h1>
+<h1 class="title" >this is comments list page.</h1>
 <form action="/comments/" method="post">
     {% csrf_token %}
     {{ form.quote_id.label}}<br>
@@ -21,10 +20,12 @@
 <h4>=====================</h4>
 {% for comment in comments%}
 
-    <p>{{comment.id}}: {{ comment.content}}</p>
+    <p class="comment" id="comment_{{comment.id}}">{{comment.id}}: {{ comment.content}} <a href="#comment_{{comment.id}}">¶</a></p>
     <hr>
-    <br><br><br>
+    <br>
 {% endfor %}
 
+    <script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
+</head>
 </body>
 </html>

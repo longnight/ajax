@@ -1,2 +1,4 @@
-console.log('any inside');
-console.log('any inside2');
+$(".title").click(
+    function(){
+        console.log('yeah good');
+        })
