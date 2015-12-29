@@ -10,20 +10,26 @@
 <body>
 
 <h1 class="title" >this is comments list page.</h1>
+
+<h3>{% csrf_token %}</h3>
+<h4>=====================</h4>
+
 <form action="/comments/" method="post">
-    {% csrf_token %}
+    {% csrf_token %}<br>
     {{ form.quote_id.label}}<br>
     {{ form.quote_id}}{{ form.quote_id.errors}}<br><br>
     {{ form.content.label}}<br>{{ form.content}}{{ form.content.errors}}<br><br>
     <input type="submit" value="add comment" />
 </form>
+
 <hr><hr><hr>
 <h4>=====================</h4>
 {% for comment in comments%}
-
+    <div class="comment_block">
     <p class="comment" id="comment_{{comment.id}}">{{comment.id}}: {{ comment.content}} <a href="#comment_{{comment.id}}">¶</a></p>
     <hr>
     <br>
+    </div>
 {% endfor %}
 
 </body>
