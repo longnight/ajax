@@ -14,6 +14,14 @@
 <h3>{% csrf_token %}</h3>
 <h4>=====================</h4>
 
+<img class="avatar" src="{% static 'avatar.jpg' %}" >
+
+2 <br>
+
+<img class="avatar" src="{% static 'icon.jpg' %}" >
+
+<br >
+
 <form action="/comments/" method="post">
     {% csrf_token %}<br>
     {{ form.quote_id.label}}<br>

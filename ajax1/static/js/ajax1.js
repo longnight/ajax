@@ -20,13 +20,12 @@ $(document).ready(function() {
         $('body').css("background", "lightblue");
     })
 
-    // var $objlist = $('.comment');
-    // console.log($objlist[2];
-    // for (var i=1; i<$objlist.length; i++){
-        // console.log(typeof $objlist[i])
-        // console.log($objlist[i].html());
-
-    // }
+    var flag = true;
+    $('.avatar').click(function(){
+        $(this).stop().animate({height: (flag ? "500px" : "250px") }, 'fast');
+        flag = !flag;
+        // $('.avatar').css('max-width', '500px')
+    })
 
 
 });
