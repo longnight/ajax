@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
@@ -14,20 +15,20 @@
 <h3>{% csrf_token %}</h3>
 <h4>=====================</h4>
 
-<img class="avatar" src="{% static 'avatar.jpg' %}" >
+<a href="www.163.com"><img class="avatar" src="{% static 'avatar.jpg' %}" ></a>
 
-2 <br>
+<br>2<br>
 
-<img class="avatar" src="{% static 'icon.jpg' %}" >
+<a href="#"><img class="avatar" src="{% static 'icon.jpg' %}" ></a>
 
 <br >
 
-<form action="/comments/" method="post">
+<form id='comment_form' action="/comments/" method="post">
     {% csrf_token %}<br>
     {{ form.quote_id.label}}<br>
     {{ form.quote_id}}{{ form.quote_id.errors}}<br><br>
     {{ form.content.label}}<br>{{ form.content}}{{ form.content.errors}}<br><br>
-    <input type="submit" value="add comment" />
+    <input id='submit' type="submit" value="add comment" />
 </form>
 
 <hr><hr><hr>

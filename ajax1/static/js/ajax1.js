@@ -9,28 +9,33 @@ $(document).ready(function() {
         .css("background", "lightyellow")
         .css("font-size", "18px");
 
-    console.log('so far so good');
-
-
-    $('#comment_1').click(function(){
-        $('body').css("background", "#bbffaa");
-    })
-
-    $('#comment_2').click(function(){
-        $('body').css("background", "lightblue");
-    })
-
-    var flag = true;
     $('.avatar').click(function(){
-        $(this).stop().animate({height: (flag ? "500px" : "250px") }, 'fast');
-        flag = !flag;
-        // $('.avatar').css('max-width', '500px')
+        if($(this).css('max-width')  == '200px'){
+            $(this).animate({'max-width': '800px'}, 200);
+        } else {
+            $(this).animate({'max-width': '200px'}, 200);
+        }
+    return false;
     })
 
+    // make ajax post.
+    var csrftoken = Cookies.get('csrftoken');
+    // console.log(csrftoken);
+
+    $('#submit').click(function(){
+        $.post(
+            '/comments/',
+            $('#comment_form').serialize(),
+            // {
+            //     content: $('#comment_form > #id_content').val(),
+            //     csrfmiddlewaretoken: csrftoken
+            // },
+            function(){
+                console.log($('#comment_form').serialize());
+            })
+
+        return false;
+
+    })
 
 });
-
-
-
-
-

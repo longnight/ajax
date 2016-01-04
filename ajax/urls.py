@@ -21,4 +21,5 @@ from ajax1.views import comments
 urlpatterns = [
     url(r'^comments/', comments, name='comments'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', comments, name='comments'),
 ]

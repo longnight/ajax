@@ -14,6 +14,11 @@ def comments(request):
             quote_id=form.cleaned_data.get('quote_id')
             )
         comment.save()
+        if request.is_ajax():
+            print 'ajax coming~~!'
+            print comment.id
+            print comment.content
+
         print 'success!'
         return redirect('/comments/')
 
