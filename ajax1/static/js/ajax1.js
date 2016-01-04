@@ -24,18 +24,10 @@ $(document).ready(function() {
 
     $('#submit').click(function(){
         $.post(
-            '/comments/',
+            $('#comment_form').attr('action'),
             $('#comment_form').serialize(),
-            // {
-            //     content: $('#comment_form > #id_content').val(),
-            //     csrfmiddlewaretoken: csrftoken
-            // },
-            function(){
-                console.log($('#comment_form').serialize());
-            })
-
+            function(){console.log($('#comment_form').serialize());})
         return false;
-
     })
 
 });
