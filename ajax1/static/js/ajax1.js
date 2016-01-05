@@ -1,4 +1,8 @@
+
+
 $(document).ready(function() {
+
+    tinymce.init({selector: '#id_content'});
 
     var $csrf = $('input[name=csrfmiddlewaretoken]:first');
     $csrf.attr('type', 'text');
