@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+import os
+import datetime
+import time
 from django.db import models
-
+from sorl.thumbnail import ImageField
 
 class Comment(models.Model):
     content = models.TextField(blank=False)
@@ -14,3 +17,14 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return 'comment: %s' % self.id
+
+
+def user_upload_file(instance, filename):
+    fileExtension = os.path.splitext(filename)[1].lower()
+    head = datetime.datetime.now().strftime("%Y_%m") + "/"
+    tail = str(int(time.time())) + fileExtension
+    return head + tail
+
+
+class ImagsPath(models.Model):
+    img = ImageField(upload_to=user_upload_file)

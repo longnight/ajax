@@ -2,7 +2,12 @@
 
 $(document).ready(function() {
 
-    tinymce.init({selector: '#id_content'});
+    tinymce.init({
+        selector: '#id_content',
+        statusbar: false,
+        width: 400,
+        height: 200,
+    });
 
     var $csrf = $('input[name=csrfmiddlewaretoken]:first');
     $csrf.attr('type', 'text');
@@ -24,14 +29,22 @@ $(document).ready(function() {
 
     // make ajax post.
     var csrftoken = Cookies.get('csrftoken');
-    // console.log(csrftoken);
 
-    $('#submit').click(function(){
-        $.post(
-            $('#comment_form').attr('action'),
-            $('#comment_form').serialize(),
-            function(){console.log($('#comment_form').serialize());})
-        return false;
-    })
+    // tinymce.activeEditor.uploadImages(function(success) {
+    //   $.post('/comments/', tinymce.activeEditor.getContent()).done(function() {
+    //     $.post(
+    //         $('#comment_form').attr('action'),
+    //         $('#comment_form').serialize(),
+    //         function(){console.log($('#comment_form').serialize());})
+    //   });
+    // });
+
+    // $('#submit').click(function(){
+    //     $.post(
+    //         $('#comment_form').attr('action'),
+    //         $('#comment_form').serialize(),
+    //         function(){console.log($('#comment_form').serialize());})
+    //     // return false;
+    // })
 
 });

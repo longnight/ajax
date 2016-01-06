@@ -14,6 +14,15 @@
 <h1 class="title" >this is comments list page.</h1>
 
 <h3>{% csrf_token %}</h3>
+
+
+
+{% for img_path in img_paths %}
+    {{img_path.img}}<br>
+    <img src="/media/{{img_path.img}}" /><br>
+{% endfor %}
+
+
 <h4>=====================</h4>
 
 <a href="www.163.com"><img class="avatar" src="{% static 'avatar.jpg' %}" ></a>
@@ -31,12 +40,18 @@
     {{ form.content.label}}<br>{{ form.content}}{{ form.content.errors}}<br><br>
     <input id='submit' type="submit" value="add comment" />
 </form>
-
+<br><br>
+<h3>Upload img</h3>
+<form id='img_form' action="/img_upload/" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ img_form.img }}{{ img_form.img.errors }}<br><br><br>
+<input id='submit' type="submit" value="upload some thins!" />
+</form>
 <hr><hr><hr>
 <h4>=====================</h4>
 {% for comment in comments%}
     <div class="comment_block">
-    <p class="comment" id="comment_{{comment.id}}">{{comment.id}}: {{ comment.content}} <a href="#comment_{{comment.id}}">¶</a></p>
+    <p class="comment" id="comment_{{comment.id}}">{{comment.id}}: {{ comment.content|safe }} <a href="#comment_{{comment.id}}">¶</a></p>
     <hr>
     <br>
     </div>

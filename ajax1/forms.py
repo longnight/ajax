@@ -13,3 +13,7 @@ class CommentForm(forms.Form):
                                required=False,
                                widget=forms.TextInput,
                                )
+
+
+class ImageUploadForm(forms.Form):
+    img = forms.ImageField(required=True)
