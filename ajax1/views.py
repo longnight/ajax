@@ -42,8 +42,8 @@ def img_upload(request):
         if img_form.is_valid():
             img_path = ImagsPath(img=img_form.cleaned_data.get('img'))
             img_path.save()
-            # import pdb; pdb.set_trace()
-            location = 'http://' + request.get_host() + img_path.img.url
+            location = img_path.img.url
+            # location = 'http://' + request.get_host() + img_path.img.url
             rv = {'location': location}
             print rv
             status = 201

@@ -4,10 +4,10 @@ $(document).ready(function() {
 
     tinymce.init({
         selector: '#id_content',
-        plugins: ["image"],
+        plugins: "image",
         file_browser_callback: function(field_name, url, type, win) {
-            if(type=='image') $('#id_content input').click();
-        }
+        if(type=='image') $('#my_form input').click();
+    }
 
     });
 
@@ -48,5 +48,7 @@ $(document).ready(function() {
     //         function(){console.log($('#comment_form').serialize());})
     //     // return false;
     // })
+
+
 
 });

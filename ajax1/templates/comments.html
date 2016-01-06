@@ -14,9 +14,32 @@
 <h1 class="title" >this is comments list page.</h1>
 
 <h3>{% csrf_token %}</h3>
+<form id='comment_form' action="/comments/" method="post">
+    <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf_token}}' /><br>
+    QuoteID:<br>
+    <input id="id_quote_id" name="quote_id" type="text" />{{ form.quote_id.errors}}<br><br>
+    Content:<br>
+    <textarea cols="40" id="id_content" name="content" rows="10"></textarea>
+    {{ form.content.errors}}<br><br>
 
 
+    <iframe id="form_target" name="form_target" style="display:none"></iframe>
+    <form id="my_form" action="/img_upload/" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+        <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
+    </form>
 
+    <input id='submit' type="submit" value="add comment" />
+</form>
+<br><br>
+<h3>Upload img</h3>
+<form id='img_form' action="/img_upload/" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ img_form.img }}{{ img_form.img.errors }}<br><br><br>
+<input id='submit' type="submit" value="upload some thins!" />
+</form>
+
+<br >
+<hr><hr><hr>
 {% for img_path in img_paths %}
     <img src="/media/{{img_path.img}}" />......
 {% endfor %}
@@ -30,23 +53,7 @@
 
 <a href="#"><img class="avatar" src="{% static 'icon.jpg' %}" ></a>
 
-<br >
 
-<form id='comment_form' action="/comments/" method="post">
-    {% csrf_token %}<br>
-    {{ form.quote_id.label}}<br>
-    {{ form.quote_id}}{{ form.quote_id.errors}}<br><br>
-    {{ form.content.label}}<br>{{ form.content}}{{ form.content.errors}}<br><br>
-    <input id='submit' type="submit" value="add comment" />
-</form>
-<br><br>
-<h3>Upload img</h3>
-<form id='img_form' action="/img_upload/" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-{{ img_form.img }}{{ img_form.img.errors }}<br><br><br>
-<input id='submit' type="submit" value="upload some thins!" />
-</form>
-<hr><hr><hr>
 <h4>=====================</h4>
 {% for comment in comments%}
     <div class="comment_block">
