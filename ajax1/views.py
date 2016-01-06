@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+import json
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.conf import settings
 from models import Comment, ImagsPath
 from forms import CommentForm, ImageUploadForm
 
@@ -14,9 +17,7 @@ def comments(request):
         comment = Comment(content=form.cleaned_data.get('content'))
         if form.cleaned_data.get('quote_id'):
             comment.quote_id = form.cleaned_data.get('quote_id')
-
         comment.save()
-
         if request.is_ajax():
             print 'ajax coming~~!'
             print comment.id
@@ -41,8 +42,16 @@ def img_upload(request):
         if img_form.is_valid():
             img_path = ImagsPath(img=img_form.cleaned_data.get('img'))
             img_path.save()
-            print 'upload success!'
-            print img_path.img
+            # import pdb; pdb.set_trace()
+            location = 'http://' + request.get_host() + img_path.img.url
+            rv = {'location': location}
+            print rv
+            status = 201
+        else:
+            rv = img_form.errors
+            status = 409
 
-        return redirect('/comments/')
-
+        return HttpResponse(json.dumps(rv),
+                            status=status,
+                            content_type="application/json"
+                            )

@@ -4,9 +4,11 @@ $(document).ready(function() {
 
     tinymce.init({
         selector: '#id_content',
-        statusbar: false,
-        width: 400,
-        height: 200,
+        plugins: ["image"],
+        file_browser_callback: function(field_name, url, type, win) {
+            if(type=='image') $('#id_content input').click();
+        }
+
     });
 
     var $csrf = $('input[name=csrfmiddlewaretoken]:first');
