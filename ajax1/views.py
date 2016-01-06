@@ -42,16 +42,24 @@ def img_upload(request):
         if img_form.is_valid():
             img_path = ImagsPath(img=img_form.cleaned_data.get('img'))
             img_path.save()
-            location = img_path.img.url
-            # location = 'http://' + request.get_host() + img_path.img.url
-            rv = {'location': location}
-            print rv
-            status = 201
+            # location = img_path.img.url
+            location = 'http://' + request.get_host() + img_path.img.url
+            # rv = {'location': location}
+            # print rv
+            status = 200
+            print location
+            # import pdb;pdb.set_trace()
+            script_string = """
+            <script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>
+            """ % location
+            return HttpResponse(script_string,
+                                status=status
+                                )
         else:
             rv = img_form.errors
+            print rv
             status = 409
-
-        return HttpResponse(json.dumps(rv),
-                            status=status,
-                            content_type="application/json"
-                            )
+            return HttpResponse(
+                "<script>alert('%s');</script>" % img_form.errors,
+                status=status
+                )

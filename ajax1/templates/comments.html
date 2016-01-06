@@ -14,6 +14,7 @@
 <h1 class="title" >this is comments list page.</h1>
 
 <h3>{% csrf_token %}</h3>
+
 <form id='comment_form' action="/comments/" method="post">
     <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf_token}}' /><br>
     QuoteID:<br>
@@ -21,27 +22,33 @@
     Content:<br>
     <textarea cols="40" id="id_content" name="content" rows="10"></textarea>
     {{ form.content.errors}}<br><br>
-
-
-    <iframe id="form_target" name="form_target" style="display:none"></iframe>
-    <form id="my_form" action="/img_upload/" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
-        <input name="image" type="file" onchange="$('#my_form').submit();this.value='';">
-    </form>
-
     <input id='submit' type="submit" value="add comment" />
 </form>
+
+<iframe id="form_target" name="form_target" style="display:none"></iframe>
+<form id="my_form" action="/img_upload/"
+    target="form_target" method="post" enctype="multipart/form-data"
+    style="width:0px;height:0;overflow:hidden">
+<input type='hidden' name='csrfmiddlewaretoken' value='{{csrf_token}}' />
+<input id="id_img" name="img" type="file" onchange="$('#my_form').submit();this.value='';">
+</form>
+
+
 <br><br>
 <h3>Upload img</h3>
+
+{% comment %}
 <form id='img_form' action="/img_upload/" method="post" enctype="multipart/form-data">
 {% csrf_token %}
-{{ img_form.img }}{{ img_form.img.errors }}<br><br><br>
+<input id="id_img" name="img" type="file">{{ img_form.img.errors }}<br><br><br>
 <input id='submit' type="submit" value="upload some thins!" />
 </form>
+{% endcomment %}
 
 <br >
 <hr><hr><hr>
 {% for img_path in img_paths %}
-    <img src="/media/{{img_path.img}}" />......
+    <img src="/media/{{img_path.img}}" width="100" />......
 {% endfor %}
 
 

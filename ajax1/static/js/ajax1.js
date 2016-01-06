@@ -4,10 +4,11 @@ $(document).ready(function() {
 
     tinymce.init({
         selector: '#id_content',
-        plugins: "image",
+        // selector: '#my_editor',
+        plugins: ["image", "code"],
         file_browser_callback: function(field_name, url, type, win) {
         if(type=='image') $('#my_form input').click();
-    }
+        }
 
     });
 
