@@ -9,8 +9,8 @@ $(document).ready(function() {
         file_browser_callback: function(field_name, url, type, win) {
         if(type=='image') $('#my_form input').click();
         }
-
     });
+
 
     var $csrf = $('input[name=csrfmiddlewaretoken]:first');
     $csrf.attr('type', 'text');
@@ -33,22 +33,21 @@ $(document).ready(function() {
     // make ajax post.
     var csrftoken = Cookies.get('csrftoken');
 
-    // tinymce.activeEditor.uploadImages(function(success) {
-    //   $.post('/comments/', tinymce.activeEditor.getContent()).done(function() {
-    //     $.post(
-    //         $('#comment_form').attr('action'),
-    //         $('#comment_form').serialize(),
-    //         function(){console.log($('#comment_form').serialize());})
-    //   });
-    // });
+    var s_content = '<h3>any word, before</h3>';
 
-    // $('#submit').click(function(){
-    //     $.post(
-    //         $('#comment_form').attr('action'),
-    //         $('#comment_form').serialize(),
-    //         function(){console.log($('#comment_form').serialize());})
-    //     // return false;
-    // })
+    $('#s_content').html(s_content);
+
+    $('#get_s_content').click(function(){
+
+
+        s_content = '<h3>oh, you clicking on me</h3>';
+        $('#loading').show();
+        $('#s_content').html(s_content);
+
+
+    })
+
+
 
 
 

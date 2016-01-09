@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
+import string
+import random
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
@@ -26,14 +28,34 @@ def comments(request):
         print 'success!'
         return redirect('/comments/')
 
-    comments = Comment.objects.order_by('-id').all()
-    img_paths = ImagsPath.objects.order_by('-id').all()
+    comments = Comment.objects.order_by('-id').all()[:8]
+    img_paths = ImagsPath.objects.order_by('-id').all()[:5]
     c = {
         'comments': comments, 'form': form, 'img_form': img_form,
         'img_paths': img_paths,
         }
 
     return render(request, 'comments.html', c)
+
+
+def gen_random_char(size=10, flag='digits'):
+
+    if flag == 'digits':
+        charsets = '123456789'  # nonzero
+    elif flag == 'lowercase':
+        charsets = string.ascii_lowercase
+    elif flag == 'uppercase':
+        charsets = string.ascii_uppercase
+    else:  # flag='any other value'
+        charsets = '123456789' + string.ascii_lowercase
+    rand_char = ''.join(random.SystemRandom().choice(
+        charsets) for _ in range(size))
+    return unicode(rand_char)
+
+
+def s(request):
+    s = gen_random_char(size=3)
+    return HttpResponse(s)
 
 
 def img_upload(request):

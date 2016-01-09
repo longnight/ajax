@@ -14,6 +14,13 @@
 <h1 class="title" >this is comments list page.</h1>
 
 <h3>{% csrf_token %}</h3>
+<div id='xmlhq'>
+    <div id='s_content'></div>
+    <br>
+
+    <br>
+    <button id='get_s_content'>Get them!</button> <span id='loading' style="display:None">Iam loading......</span>
+</div>
 
 <form id='comment_form' action="/comments/" method="post">
     <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf_token}}' /><br>
@@ -33,10 +40,7 @@
 <input id="id_img" name="img" type="file" onchange="$('#my_form').submit();this.value='';">
 </form>
 
-
 <br><br>
-<h3>Upload img</h3>
-
 {% comment %}
 <form id='img_form' action="/img_upload/" method="post" enctype="multipart/form-data">
 {% csrf_token %}
