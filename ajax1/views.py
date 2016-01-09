@@ -2,6 +2,7 @@
 import json
 import string
 import random
+from time import sleep
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
@@ -55,6 +56,9 @@ def gen_random_char(size=10, flag='digits'):
 
 def s(request):
     s = gen_random_char(size=3)
+    if request.is_ajax():
+        s += '  is ajax request!'
+    # sleep(2)
     return HttpResponse(s)
 
 

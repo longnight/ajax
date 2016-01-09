@@ -34,21 +34,34 @@ $(document).ready(function() {
     var csrftoken = Cookies.get('csrftoken');
 
     var s_content = '<h3>any word, before</h3>';
-
     $('#s_content').html(s_content);
 
+    // xhr GET content:
+
     $('#get_s_content').click(function(){
-
-
         s_content = '<h3>oh, you clicking on me</h3>';
         $('#loading').show();
-        $('#s_content').html(s_content);
 
+        xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function(){
+            console.log('state going: %d ', xhr.readyState);
+            if (xhr.readyState == 4){
+                if (xhr.status >= 200 ){
+                    rv = xhr.responseText;
+                } else {
+                    rv = 'noogood response!'
+                }
+                $('#loading').hide();
+                $('#s_content').html(rv);
+            }
+        }
+
+        xhr.open('get', '/s/', true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send(null);
 
     })
-
-
-
 
 
 });
