@@ -15,17 +15,18 @@ def comments(request):
     form = CommentForm(request.POST or None)
 
     img_form = ImageUploadForm()
-
     if request.method == "POST" and form.is_valid():
         comment = Comment(content=form.cleaned_data.get('content'))
         if form.cleaned_data.get('quote_id'):
             comment.quote_id = form.cleaned_data.get('quote_id')
-        comment.save()
+
         if request.is_ajax():
             print 'ajax coming~~!'
             print comment.id
             print comment.content
+            comment.content += ' (from ajax!)'
 
+        comment.save()
         print 'success!'
         return redirect('/comments/')
 
