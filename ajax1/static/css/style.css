@@ -2,6 +2,11 @@ body {
     background-color: lightgray;
 }
 
+
+#comment_form {
+    width: 450px;
+}
+
 .avatar {
     max-width: 200px;
 }
