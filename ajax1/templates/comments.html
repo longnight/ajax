@@ -4,8 +4,10 @@
 <head>
     <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/velocity.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tinymce.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ajax2.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
@@ -13,7 +15,12 @@
 
 <h1 class="title" >this is comments list page.</h1>
 
+
 <h3>{% csrf_token %}</h3>
+<div id="loading">
+    <span> >> I'am loading boy. Rolling like a rock...</span>
+</div>
+
 
 <form id='comment_form' action="/comments/" method="post">
     <input type='hidden' name='csrfmiddlewaretoken' value='{{csrf_token}}' /><br>
@@ -24,6 +31,8 @@
     {{ form.content.errors}}<br><br>
     <input id='submit' type="submit" value="add comment" />
 </form>
+
+<div class="my_flag">oh my flag!</div>
 
 <iframe id="form_target" name="form_target" style="display:none"></iframe>
 <form id="my_form" action="/img_upload/"

@@ -33,6 +33,18 @@ $(document).ready(function() {
     // make ajax post.
     var csrftoken = Cookies.get('csrftoken');
 
+    var $loading = $('#loading').hide();
+    $(document)
+      .ajaxStart(function () {
+        alert('loading me!');
+        $loading.show();
+      })
+      .ajaxStop(function () {
+        $loading.hide();
+      });
+
+
+
     // tinymce.activeEditor.uploadImages(function(success) {
     //   $.post('/comments/', tinymce.activeEditor.getContent()).done(function() {
     //     $.post(

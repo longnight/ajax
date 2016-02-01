@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+from time import sleep
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
@@ -27,7 +28,7 @@ def comments(request):
         return redirect('/comments/')
 
     comments = Comment.objects.order_by('-id').all()
-    img_paths = ImagsPath.objects.order_by('-id').all()
+    img_paths = ImagsPath.objects.order_by('-id').all()[:5]
     c = {
         'comments': comments, 'form': form, 'img_form': img_form,
         'img_paths': img_paths,
@@ -52,6 +53,7 @@ def img_upload(request):
             script_string = """
             <script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>
             """ % location
+            sleep(3)
             return HttpResponse(script_string,
                                 status=status
                                 )
