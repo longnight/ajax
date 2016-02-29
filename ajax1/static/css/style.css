@@ -12,6 +12,17 @@ body {
 }
 
 
+<<<<<<< HEAD
 #qrcode {
   margin-top:15px;
 }
+=======
+/*================ velocity.js demo ===========*/
+.my_flag {
+    width: 120px;
+    height: 45px;
+    background-color: green;
+}
+
+/*================ velocity.js demo end ===========*/
+>>>>>>> 68a4345640dc1ea35fe17dfc06ae27ef0a215e3e

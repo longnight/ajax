@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-import json
+# import json
 import string
 import random
 from time import sleep
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.conf import settings
+# from django.conf import settings
 from models import Comment, ImagsPath
 from forms import CommentForm, ImageUploadForm
+
+
+def bootstrap(request):
+
+    return render(request, 'bootstrap.html', {})
 
 
 def comments(request):
@@ -79,6 +84,7 @@ def img_upload(request):
             script_string = """
             <script>top.$('.mce-btn.mce-open').parent().find('.mce-textbox').val('%s').closest('.mce-window').find('.mce-primary').click();</script>
             """ % location
+            sleep(3)
             return HttpResponse(script_string,
                                 status=status
                                 )

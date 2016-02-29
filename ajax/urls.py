@@ -17,11 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
 from django.contrib import admin
-from ajax1.views import comments, img_upload, s
+from ajax1.views import comments, img_upload, s, bootstrap
 
 
 urlpatterns = [
     url(r'^s/', s, name='s'),
+    url(r'^bootstrap/', bootstrap, name='bootstrap'),
     url(r'^comments/', comments, name='comments'),
     url(r'^img_upload/', img_upload, name='img_upload'),
     url(r'^admin/', include(admin.site.urls)),

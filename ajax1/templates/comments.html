@@ -4,6 +4,7 @@
 <head>
     <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/velocity.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tinymce.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/qrcode.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ajax1.js' %}"></script>
@@ -13,9 +14,20 @@
 
 <body>
 
+<a href="/comments/">comments</a>|<br>
+<a href="/s/">s</a>|<br>
+<a href="/bootstrap/">bootstrap</a><br>
+
 <h1 class="title" >this is comments list page.</h1>
 
+
 <h3>{% csrf_token %}</h3>
+
+<div id="loading">
+    <span> >> I'am loading boy. Rolling like a rock...</span>
+</div>
+
+
 <div id='xmlhq'>
     <div id='s_content'></div>
     <br>
@@ -37,6 +49,8 @@
 </div>
 
 
+
+<div class="my_flag">oh my flag!</div>
 
 <iframe id="form_target" name="form_target" style="display:none"></iframe>
 <form id="my_form" action="/img_upload/"

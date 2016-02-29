@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 $(document).ready(function() {
 
@@ -9,3 +10,17 @@ $(document).ready(function() {
     }
     qrcode.makeCode(url);
 })
+=======
+$(document).ready(function() {
+
+    function myFlag(){
+        $('.my_flag').velocity("fadeOut", {
+            duration: 350
+    })};
+
+    $('#submit').eq(0).on('click', function(){
+        myFlag();
+    })
+
+});
+>>>>>>> 68a4345640dc1ea35fe17dfc06ae27ef0a215e3e

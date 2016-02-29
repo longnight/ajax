@@ -30,7 +30,31 @@ $(document).ready(function() {
     })
 
 
+<<<<<<< HEAD
     var csrftoken = Cookies.get('csrftoken');
+=======
+<<<<<<< HEAD
+    var $loading = $('#loading').hide();
+    $(document)
+      .ajaxStart(function () {
+        alert('loading me!');
+        $loading.show();
+      })
+      .ajaxStop(function () {
+        $loading.hide();
+      });
+
+
+
+    // tinymce.activeEditor.uploadImages(function(success) {
+    //   $.post('/comments/', tinymce.activeEditor.getContent()).done(function() {
+    //     $.post(
+    //         $('#comment_form').attr('action'),
+    //         $('#comment_form').serialize(),
+    //         function(){console.log($('#comment_form').serialize());})
+    //   });
+    // });
+>>>>>>> 68a4345640dc1ea35fe17dfc06ae27ef0a215e3e
 
     // make ajax post.
     // $('#comment_form #mysubmit').click(function(e){
