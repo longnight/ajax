@@ -5,11 +5,10 @@
   <title>My Bootstrap test field</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
-  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
-
   <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css">
-
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui-1.10.4.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/litetooltip.min.css' %}">
 
 </head>
 
@@ -37,6 +36,53 @@
 
 <!-- 并不强调是一个按钮，看起来像一个链接，但同时保持按钮的行为 -->
 <button type="button" class="btn btn-link">链接按钮</button>
+<hr>
+
+<div class="container">
+
+  <div class="about_content">
+
+    <div class="row">
+      <div class="col-md-5 col-sm-12">adfuoi</div>
+      <div class="col-md-5 col-sm-12">
+        <div class="litetooltip-hotspot-wrapper" style="max-width: 480px">
+        <div class="litetooltip-hotspot-container" style="padding-bottom: 64.58333333333334%">
+        <img class="img-responsive" src="http://www.mixtile.cn/static/media/uploads/201603/offices_map_480_small.png" data-width="480" data-height="310" />
+        <div class="hotspot blink" style="top: 58.387096774193544%; left: 76.04166666666666%; width: 3.958333333333333%; height: 6.129032258064516%; background: #cc0000; border: 1px solid #cc0000; border-radius: 50px; opacity: 0.8" id="hotspot_1456909661386" data-location="top" data-template="" data-templatename="" data-opacity="0.8" data-backcolor="#000000" data-textcolor="#ffffff" data-textalign="center" data-margin="2" data-padding="2" data-width="0" data-delay="0" data-trigger="hover" data-issticky="false" data-hotspot-x="76.04166666666666" data-hotspot-y="58.387096774193544" data-hotspot-blink="true" data-hotspot-bgcolor="#cc0000" data-hotspot-bordercolor="#cc0000" data-hotspot-borderradius="50">
+        <div class="data-container">中国，深圳</div>
+        </div>
+
+        <div class="hotspot blink" style="top: 49.354838709677416%; left: 12.083333333333334%; width: 4.375%; height: 6.451612903225806%; background: #ff1e53; border: 1px solid #7fba00; border-radius: 50px; opacity: 0.8" id="hotspot_1456909670601" data-location="top" data-template="template" data-templatename="" data-opacity="0.7" data-backcolor="#000000" data-textcolor="#ffffff" data-textalign="center" data-margin="2" data-padding="2" data-width="0" data-delay="0" data-trigger="hoverable" data-issticky="true" data-hotspot-x="12.083333333333334" data-hotspot-y="49.354838709677416" data-hotspot-blink="true" data-hotspot-bgcolor="#ff1e53" data-hotspot-bordercolor="#7fba00" data-hotspot-borderradius="50">
+        <div class="data-container">美国， 硅谷</div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-12">block1</div>
+      <div class="col-md-3 col-sm-12">block2</div>
+      <div class="col-md-3 col-sm-12">block3</div>
+    </div>
+  </div>
+</div>
+
+
+ <script>
+
+ //  $('.litetooltip-hotspot-wrapper .hotspot').each(function () {
+ //    $(this).LiteTooltip({ title: $(this).find('.data-container').html() });
+ // });
+</script>
+
+  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.js' %}"></script>
+  <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-ui-1.10.4.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.finger.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/litetooltip.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/my_bootstrap.js' %}"></script>
 
 </body>
 </html>
